@@ -1,0 +1,101 @@
+/* home.css */
+
+/* Styles for the main container */
+.home {
+  padding: 5px;
+  margin: 0 auto;
+  /* background-size: cover(auto);
+  background-position: center;
+  background-image: linear-gradient(rgba(206, 206, 206, 0), rgba(255, 255, 255, 0)), url('../assest/homebg4.webp'); */
+}
+
+/* Styles for the flex container */
+.flex-container {
+  display: flex;
+  gap: 8px;
+  padding: 2px;
+}
+
+/* Styles for specific sections or elements within the Home component */
+.section-one {
+  width: 50%;
+}
+
+.section-two {
+  width: 50%;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  padding: 4px;
+  justify-content: center;
+}
+
+/* Styles for headings */
+.heading {
+  font-size: 24px;
+  font-weight: bold;
+  margin-bottom: 4px;
+  background-color: #374151;
+  color: white;
+  padding: 2px;
+  border-radius: 4px;
+}
+
+/* Styles for buttons or other elements */
+.button-container {
+  display: flex;
+  gap: 4px;
+}
+
+/* Styles for the Happy New Year text */
+.feliz {
+  font-size: 24px;
+  font-weight: bold;
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+/* Styles for the year 2023 display */
+.ano_novo {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 32px;
+  margin-bottom: 20px;
+}
+
+.ano_novo span {
+  margin: 0 5px;
+}
+
+/* Styles for the balloons */
+.balao {
+  width: 50px;
+  height: 50px;
+  background-color: red;
+  border-radius: 50%;
+  margin: 0 auto;
+}
+
+/* Styles for the fireworks */
+.fogos {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 20px;
+}
+
+.fogos > div {
+  display: flex;
+  gap: 5px;
+}
+
+.fogos span {
+  display: block;
+  width: 20px;
+  height: 20px;
+  background-color: yellow;
+  border-radius: 50%;
+}
+
+/* Other styles for elements as needed */

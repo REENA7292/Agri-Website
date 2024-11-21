@@ -1,0 +1,52 @@
+/* homecard.css */
+
+/* Styles for .home-card */
+.home-card {
+    width: 100%;
+    min-width: 200px;
+    max-width: 200px;
+    padding: 20px;
+    cursor: pointer;
+    display: flex;
+    flex-direction: column;
+    background-size: cover;
+    background-position: center;
+    box-shadow: 0px 0px 20px 15px rgb(0, 0, 0);
+    background-image: linear-gradient(rgba(0, 0, 0, 0), rgba(0, 0, 0, 0)),url('../assest/homebg4.webp');
+  }
+
+  .home-card:hover {
+    box-shadow: 0px 0px 20px 20px rgba(255, 255, 255, 0.892);
+  }
+  
+  /* Styles for .home-card img */
+  .home-card img {
+    width: 100%;
+    height: auto;
+    max-width: 100%;
+    border-radius: 8px;
+    margin-bottom: 10px;
+  }
+  
+  /* Styles for .home-card h3 */
+  .home-card h3 {
+    font-weight: 600;
+    color: #ffff;
+    text-transform: capitalize;
+    font-size: 1.25rem;
+    margin-bottom: 5px;
+  }
+  
+  /* Styles for .home-card p */
+  .home-card p {
+    color: #f59e0b;
+    font-weight: 900;
+    margin-bottom: 5px;
+  }
+  
+  /* Styles for .home-card .price */
+  .home-card .price {
+    font-weight: bold;
+    color: #f59e0b;
+  }
+  

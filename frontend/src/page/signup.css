@@ -1,0 +1,111 @@
+/* Styles for the outer container */
+.signup-container {
+    height: 100vh; /* Ensures the container covers the entire viewport height */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-position: center;
+    background-size: cover(auto);
+    background-size: contain;
+    background-image: url(../assest/homebg4.webp);
+  }
+  
+  /* Styles for the signup form */
+  .signup-form {
+    width: 100%;
+    max-width: 400px;
+    background-color: #ffffff;
+    border-radius: 8px;
+    padding: 18px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    box-shadow: 0px 0px 50px 30px rgb(0, 0, 0);
+    background-position: center;
+    background-size: cover(auto);
+    background-size: contain;
+    background-image: url(../assest/homebg4.webp);
+  }
+  
+  /* Styles for the profile image container */
+  .image-container {
+    width: 120px;
+    height: 120px;
+    overflow: hidden;
+    border-radius: 50%;
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+    margin-bottom: 16px;
+    position: relative;
+  }
+  
+  /* Styles for the profile image and upload label */
+  .image-container img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+  
+  .image-upload-label {
+    position: absolute;
+    bottom: 0;
+    height: 33.33%;
+    width: 100%;
+    background-color: rgba(255, 255, 0, 0.5); /* Yellow background with opacity */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+  }
+  
+  .image-upload-label p {
+    font-size: 14px;
+    font-weight: bold;
+    color: #ffffff;
+    margin: 0;
+    padding: 4px;
+  }
+  
+  /* Styles for the input fields */
+  .input-field {
+    width: 100%;
+    margin-top: 8px;
+    margin-bottom: 16px;
+    padding: 8px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+  }
+  
+  /* Styles for the password visibility icon */
+  .password-icon {
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+  }
+  
+  /* Styles for the signup button */
+  .signup-button {
+    width: 150px;
+    background-color: #f59e0b;
+    color: #fff;
+    font-size: 16px;
+    font-weight: bold;
+    padding: 8px;
+    border: none;
+    border-radius: 25px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
+  
+  .signup-button:hover {
+    background-color: #fbbf24;
+  }
+  
+  /* Styles for the login link */
+  .login-link {
+    margin-top: 12px;
+    font-size: 14px;
+    color: #ff4500;
+    text-decoration: underline;
+    cursor: pointer;
+  }
+  

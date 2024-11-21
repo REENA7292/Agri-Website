@@ -1,0 +1,74 @@
+/* Contact.css */
+.contact{
+    background-size: cover(auto);
+    background-position: center;
+    background-size:contain;
+    /* background-image: linear-gradient(rgba(206, 206, 206, 0), rgba(255, 255, 255, 0)),url('../assest/homebg4.webp'); */
+}
+/* Form container styles */
+  .contact-form-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+
+   }
+  
+  .form-wrapper {
+    width: 100%;
+    max-width: 400px;
+    margin: 0 auto;
+  }
+  
+  .conf {
+    background-size: cover(auto);
+    background-position: center;
+    background-size:contain;
+    box-shadow: 0px 0px 60px 30px hsl(0, 0%, 0%);
+    background-image: linear-gradient(rgba(206, 206, 206, 0), rgba(255, 255, 255, 0)),url('../assest/homebg4.webp');
+  }
+  
+  .form img {
+    width: 100%;
+    height: auto;
+    border-radius: 50%;
+  }
+  
+  /* Input field styles */
+  .form input[type="text"],
+  .form input[type="email"],
+  .form textarea {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 15px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+  }
+  
+  /* Submit button styles */
+  .conbut[type="submit"] {
+    width: auto;
+    padding: 10px;
+    border: none;
+    border-radius: 5px;
+    color: #fff;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    
+  }
+  
+  
+  /* Label styles */
+  .form label {
+    margin-bottom: 5px;
+    color: #333333;
+  }
+  
+  /* Additional text styles */
+  .form p {
+    margin-top: 10px;
+    font-size: 14px;
+    color: #333333;
+  }
+  

@@ -1,0 +1,7 @@
+.men{
+    background-size: cover(auto);
+    background-size: contain;
+    background-position: center;
+    box-shadow: 0px 0px 50px 40px hsl(0, 0%, 0%);
+    background-image: linear-gradient(rgba(206, 206, 206, 0), rgba(255, 255, 255, 0)),url('../assest/homebg4.webp');
+}

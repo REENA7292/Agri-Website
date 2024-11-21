@@ -1,0 +1,117 @@
+/* General Container */
+.about-container {
+    padding: 3rem 2rem;
+    max-width: 1200px;
+    margin: 0 auto;
+    background-color: rgba(161, 136, 136, 0.5);
+    /* Light grey/white with transparency */
+    color: #343a40;
+    font-family: 'Roboto', sans-serif;
+    border-radius: 28px;
+    /* Optional: To add rounded corners */
+}
+
+/* Main Heading */
+.about-title {
+    font-size: 3.5rem;
+    font-weight: bold;
+    text-align: center;
+    margin-bottom: 3rem;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    color: #efdc0c;
+    border-bottom: 4px solid #c5b939;
+    display: inline-block;
+    padding-bottom: 0.5rem;
+}
+
+/* Introduction Section */
+.about-intro {
+    margin-bottom: 3rem;
+    text-align: center;
+}
+
+.about-paragraph {
+    font-size: 1.125rem;
+    line-height: 1.8;
+    max-width: 900px;
+    margin: 0 auto 1.5rem;
+    color: #101111;
+    text-align: justify;
+}
+
+.about-paragraph strong {
+    color: #007bff;
+    font-weight: bold;
+}
+
+/* Section Titles */
+.about-section-title {
+    font-size: 2.25rem;
+    font-weight: 600;
+    text-align: center;
+    margin-bottom: 1.5rem;
+    color: #111212;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+/* Section Content */
+.about-section {
+    margin-bottom: 3rem;
+}
+
+/* History, Vision, Team, Contact Section */
+.about-section p {
+    font-size: 1.125rem;
+    line-height: 1.75;
+    text-align: center;
+    max-width: 900px;
+    margin: 0 auto;
+    color: #c6bd67;
+}
+
+/* Contact Section */
+.about-section p strong {
+    color: #171c21;
+}
+
+/* Social Icons Section */
+.social-icons {
+    display: flex;
+    justify-content: center;
+    gap: 2rem;
+    margin-top: 2rem;
+}
+
+.social-icons .icon {
+    font-size: 2.5rem;
+    color: #0782ed;
+    transition: color 0.3s, transform 0.3s;
+    text-shadow: 1px 1px 5px rgba(0, 0, 0, 0.2);
+}
+
+.social-icons .icon:hover {
+    color: #007bff;
+    transform: scale(1.2);
+    text-shadow: 2px 2px 6px rgba(0, 123, 255, 0.3);
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .about-title {
+        font-size: 2.5rem;
+    }
+
+    .about-section-title {
+        font-size: 1.75rem;
+    }
+
+    .about-paragraph {
+        font-size: 1rem;
+    }
+
+    .social-icons .icon {
+        font-size: 2rem;
+    }
+}

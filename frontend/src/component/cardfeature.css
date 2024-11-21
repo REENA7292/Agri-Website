@@ -1,0 +1,84 @@
+/* cardfeature.css */
+
+/* Styles for .card-feature */
+.card-feature {
+    width: 100%;
+    min-width: 200px;
+    max-width: 200px;
+    padding: 10px;
+    cursor: pointer;
+    display: flex;
+    flex-direction: column;
+    background-size: cover;
+    background-position: center;
+    box-shadow: 0px 0px 20px 15px rgb(0, 0, 0);
+    background-image: linear-gradient(rgba(206, 206, 206, 0), rgba(255, 255, 255, 0)),url('../assest/homebg4.webp');
+
+
+  }
+  
+  /* Styles for .card-feature:hover */
+  .card-feature:hover {
+    box-shadow: 0px 0px 20px 20px rgb(255, 255, 255);
+  }
+  
+  /* Styles for .card-feature img */
+  .card-feature img {
+    height: 100%;
+  }
+  
+  /* Styles for .card-feature-title */
+  .card-feature-title {
+    font-weight: 600;
+    color: #ffffff;
+    text-transform: capitalize;
+    font-size: 1.25rem;
+    margin-top: 1rem;
+    white-space: nowrap;
+    overflow: hidden;
+  }
+  
+  /* Styles for .card-feature-category */
+  .card-feature-category {
+    color: #f59e0b;
+    font-weight: 900;
+  }
+  
+  /* Styles for .card-feature-quantity */
+  .card-feature-quantity {
+    font-weight: bold;
+    color: #f59e0b;
+  }
+  
+  /* Styles for .card-feature-price */
+  .card-feature-price {
+    font-weight: bold;
+    color: #f59e0b;
+  }
+  
+  /* Styles for .card-feature-button */
+  .card-feature-button {
+    background-color: #f59e0b;
+    padding: 8px 0;
+    margin-top: 10px;
+    border-radius: 4px;
+    display: block;
+    text-align: center;
+    cursor: pointer;
+    color: #fff;
+    transition: background-color 0.3s ease-in-out;
+  }
+  
+  /* Styles for .card-feature-button:hover */
+  .card-feature-button:hover {
+    background-color: #fbbf24;
+  }
+  
+  /* Styles for .card-feature-loading */
+  .card-feature-loading {
+    min-height: 150px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  

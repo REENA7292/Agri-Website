@@ -1,0 +1,87 @@
+.login {
+    height: 100vh; /* Ensure the container covers the full viewport height */
+    width: 100%;
+    /* background-size: cover(auto);
+    background-position: center;
+    background-size:contain;
+    background-image: linear-gradient(rgba(206, 206, 206, 0), rgba(255, 255, 255, 0)),url('../assest/homebg4.webp'); */
+    }
+  .login-container {
+    padding:5px;
+    margin:  auto;
+    }
+  
+  /* Styles for the form container */
+  .form-container {
+    width: 100%;
+    max-width: 400px;
+    background-color: #ffffff;
+    border-radius: 8px;
+    padding: 16px;
+    margin-top: 120px;
+    margin-left:auto ;
+    margin-right: auto;
+    /* margin: auto; */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    box-shadow: 0px 0px 60px 30px hsl(0, 0%, 0%);
+    background-position: center;
+    background-size: cover;
+    background-image: linear-gradient(rgba(0, 0, 0, 0), rgba(0, 0, 0, 0)),url('../assest/homebg4.webp');
+  }
+  
+  /* Styles for the image container */
+  .image-container {
+    width: 120px;
+    height: 120px;
+    overflow: hidden;
+    border-radius: 50%;
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+    margin-bottom: 16px;
+  }
+  
+  /* Styles for the input fields */
+  .input-field {
+    width: 100%;
+    margin-top: 8px;
+    margin-bottom: 16px;
+    padding: 8px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+  }
+  
+  /* Styles for the password visibility icon */
+  .password-icon {
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+  }
+  
+  /* Styles for the login button */
+  .login-button {
+    width: 150px;
+    background-color: #f59e0b;
+    color: #fff;
+    font-size: 16px;
+    font-weight: bold;
+    padding: 8px;
+    border: none;
+    border-radius: 25px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
+  
+  .login-button:hover {
+    background-color: #fbbf24;
+  }
+  
+  /* Styles for the sign-up link */
+  .sign-up-link {
+    margin-top: 12px;
+    font-size: 14px;
+    color: #ff4500;
+    text-decoration: underline;
+    cursor: pointer;
+  }
+  

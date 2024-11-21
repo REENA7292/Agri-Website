@@ -1,0 +1,31 @@
+main{
+    height: 100%;
+    background-size:100%;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-size: cover;
+
+    background-image: linear-gradient(rgba(206, 206, 206, 0), rgba(255, 255, 255, 0)),url('../assest/homebg4.webp');
+}
+.car1{
+    height: 100%;
+    background-size:100%;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-size: cover;
+    cursor: pointer;
+
+    /* background-image: linear-gradient(rgba(206, 206, 206, 0), rgba(255, 255, 255, 0)),url('../assest/homebg4.webp'); */
+}
+.cart2:hover{
+    box-shadow: 0px 0px 10px 20px rgba(236, 233, 233, 0.892);
+}
+.cart2{
+    height: fit-content;
+    background-size: cover(auto);
+    background-size: contain;
+    background-position: center;
+    box-shadow: 0px 0px 20px 10px hsl(0, 0%, 100%);
+    background-image: linear-gradient(rgba(206, 206, 206, 0), rgba(255, 255, 255, 0)),url('../assest/homebg4.webp');
+
+}
