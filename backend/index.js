@@ -1,9 +1,10 @@
+const path = require("path");
 const express = require("express");
 const cors = require("cors");
 const mongoose = require("mongoose");
 const dotenv = require("dotenv").config();
-const Stripe = require('stripe')
-require('dotenv').config();
+const Stripe = require("stripe");
+require("dotenv").config();
 
 const app = express();
 app.use(cors());
@@ -16,6 +17,16 @@ mongoose
   .connect(process.env.MONGODB_URL)
   .then(() => console.log("Database Connected Successfully"))
   .catch((err) => console.log(err));
+
+// Serve the static files from the React app in production
+if (process.env.NODE_ENV === "production") {
+  app.use(express.static(path.join(__dirname, "../frontend/build")));
+
+  // Serve index.html for all other routes (React Router will handle the routing)
+  app.get("*", (req, res) => {
+    res.sendFile(path.join(__dirname, "../frontend/build/index.html"));
+  });
+}
 
 //schema
 const userSchema = mongoose.Schema({
@@ -32,7 +43,7 @@ const userSchema = mongoose.Schema({
 
 const cartItemSchema = new mongoose.Schema({
   name: String,
-  email:String,
+  email: String,
   price: Number,
   quantity: Number,
   total: Number,
@@ -49,19 +60,28 @@ app.post("/store-cart-details", async (req, res) => {
     const cartItems = req.body.cartItems; // Assuming cartItems is an array of items
 
     // Save each cart item to the database
-    const savedItems = await Promise.all(cartItems.map(async (item) => {
-      const { name, price, quantity,total ,razorpay_payment_id} = item;
-      const newItem = new CartItem({ name, price, quantity,total,razorpay_payment_id });
-      return await newItem.save();
-    }));
+    const savedItems = await Promise.all(
+      cartItems.map(async (item) => {
+        const { name, price, quantity, total, razorpay_payment_id } = item;
+        const newItem = new CartItem({
+          name,
+          price,
+          quantity,
+          total,
+          razorpay_payment_id,
+        });
+        return await newItem.save();
+      })
+    );
 
-    res.status(200).json({ message: "Cart details stored successfully", savedItems });
+    res
+      .status(200)
+      .json({ message: "Cart details stored successfully", savedItems });
   } catch (error) {
     console.error("Error storing cart details:", error);
     res.status(500).json({ error: "Failed to store" });
   }
 });
-
 
 //
 const userModel = mongoose.model("user", userSchema);
@@ -89,7 +109,9 @@ app.post("/store-cart-items", async (req, res) => {
 
     await user.save();
 
-    res.status(200).json({ message: "Cart items stored successfully", alert: true });
+    res
+      .status(200)
+      .json({ message: "Cart items stored successfully", alert: true });
   } catch (err) {
     console.error(err);
     res.status(500).json({ error: "Internal server error" });
@@ -98,122 +120,124 @@ app.post("/store-cart-items", async (req, res) => {
 
 app.post("/login", async (req, res) => {
   try {
-      const { email, password } = req.body;
+    const { email, password } = req.body;
 
-      const user = await userModel.findOne({ email: email }).exec();
+    const user = await userModel.findOne({ email: email }).exec();
 
-      if (user) {
-          const dataSend = {
-              id: user._id,
-              firstName: user.firstName,
-              lastName: user.lastName,
-              email: user.email,
-              image: user.image,
-          };
+    if (user) {
+      const dataSend = {
+        id: user._id,
+        firstName: user.firstName,
+        lastName: user.lastName,
+        email: user.email,
+        image: user.image,
+      };
 
-          console.log(dataSend);
-          return res.json({ message: "Login successful", alert: true, data: dataSend });
-      } else {
-          return res.status(404).json({ message: "User not found", alert: false });
-      }
+      console.log(dataSend);
+      return res.json({
+        message: "Login successful",
+        alert: true,
+        data: dataSend,
+      });
+    } else {
+      return res.status(404).json({ message: "User not found", alert: false });
+    }
   } catch (error) {
-      console.error(error);
-      return res.status(500).json({ error: "Internal server error" });
+    console.error(error);
+    return res.status(500).json({ error: "Internal server error" });
   }
 });
 
 //product section
 
 const schemaProduct = mongoose.Schema({
-  name : String,
-  category : String,
-  image : String,
-  price : String,
-  quantity : String,
-  farmername : String,
-  description : String
-})
-const productModel = mongoose.model("product",schemaProduct)
-
+  name: String,
+  category: String,
+  image: String,
+  price: String,
+  quantity: String,
+  farmername: String,
+  description: String,
+});
+const productModel = mongoose.model("product", schemaProduct);
 
 //save product in data
-app.post("/uploadProduct",async(req,res)=>{
-  console.log(req.body)
-  const data = await productModel(req.body)
-  const datasave = await data.save()
-  res.send({message : "Uploaded successfully"})
-})
+app.post("/uploadProduct", async (req, res) => {
+  console.log(req.body);
+  const data = await productModel(req.body);
+  const datasave = await data.save();
+  res.send({ message: "Uploaded successfully" });
+});
 
 //
-app.get("/product",async(req,res)=>{
-  const data = await productModel.find({})
-  res.send(JSON.stringify(data))
-})
- 
+app.get("/product", async (req, res) => {
+  const data = await productModel.find({});
+  res.send(JSON.stringify(data));
+});
+
 /*****payment getWay */
-console.log(process.env.STRIPE_SECRET_KEY)
+console.log(process.env.STRIPE_SECRET_KEY);
 
+const stripe = new Stripe(process.env.STRIPE_SECRET_KEY);
 
-const stripe  = new Stripe(process.env.STRIPE_SECRET_KEY)
+app.post("/create-checkout-session", async (req, res) => {
+  try {
+    const params = {
+      submit_type: "pay",
+      mode: "payment",
+      payment_method_types: ["card"],
+      billing_address_collection: "auto",
+      shipping_options: [{ shipping_rate: "shr_1N0qDnSAq8kJSdzMvlVkJdua" }],
 
-app.post("/create-checkout-session",async(req,res)=>{
+      line_items: req.body.map((item) => {
+        return {
+          price_data: {
+            currency: "inr",
+            product_data: {
+              name: item.name,
+              // images : [item.image]
+            },
+            unit_amount: item.price * 100,
+          },
+          adjustable_quantity: {
+            enabled: true,
+            minimum: 1,
+          },
+          quantity: item.qty,
+        };
+      }),
 
-     try{
-      const params = {
-          submit_type : 'pay',
-          mode : "payment",
-          payment_method_types : ['card'],
-          billing_address_collection : "auto",
-          shipping_options : [{shipping_rate : "shr_1N0qDnSAq8kJSdzMvlVkJdua"}],
+      success_url: `${process.env.FRONTEND_URL}/success`,
+      cancel_url: `${process.env.FRONTEND_URL}/cancel`,
+    };
 
-          line_items : req.body.map((item)=>{
-            return{
-              price_data : {
-                currency : "inr",
-                product_data : {
-                  name : item.name,
-                  // images : [item.image]
-                },
-                unit_amount : item.price * 100,
-              },
-              adjustable_quantity : {
-                enabled : true,
-                minimum : 1,
-              },
-              quantity : item.qty
-            }
-          }),
-
-          success_url : `${process.env.FRONTEND_URL}/success`,
-          cancel_url : `${process.env.FRONTEND_URL}/cancel`,
-
-      }
-
-      
-      const session = await stripe.checkout.sessions.create(params)
-      // console.log(session)
-      res.status(200).json(session.id)
-     }
-     catch (err){
-        res.status(err.statusCode || 500).json(err.message)
-     }
-
-})
+    const session = await stripe.checkout.sessions.create(params);
+    // console.log(session)
+    res.status(200).json(session.id);
+  } catch (err) {
+    res.status(err.statusCode || 500).json(err.message);
+  }
+});
 
 // Sign up
 app.post("/signup", async (req, res) => {
-  const { firstName, lastName, email, password, confirmPassword, image } = req.body;
+  const { firstName, lastName, email, password, confirmPassword, image } =
+    req.body;
 
   // Check if passwords match
   if (password !== confirmPassword) {
-    return res.status(400).json({ message: "Passwords do not match", alert: false });
+    return res
+      .status(400)
+      .json({ message: "Passwords do not match", alert: false });
   }
 
   try {
     // Check if user already exists
     const existingUser = await userModel.findOne({ email });
     if (existingUser) {
-      return res.status(400).json({ message: "User already exists", alert: false });
+      return res
+        .status(400)
+        .json({ message: "User already exists", alert: false });
     }
 
     // Create a new user
@@ -233,8 +257,6 @@ app.post("/signup", async (req, res) => {
     res.status(500).json({ error: "Internal server error" });
   }
 });
-
-
 
 //server is ruuning
 app.listen(PORT, () => console.log("server is running at port : " + PORT));
