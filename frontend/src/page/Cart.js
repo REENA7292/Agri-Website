@@ -41,7 +41,7 @@ const Cart = () => {
   //       return;
   //     }
 
-  //     const response = await fetch('http://localhost:8080/store-cart-details', {
+  //     const response = await fetch('https://agri-website-4.onrender.com/store-cart-details', {
   //       method: 'POST',
   //       headers: {
   //         'Content-Type': 'application/json',

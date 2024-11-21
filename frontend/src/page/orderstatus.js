@@ -13,7 +13,7 @@ const OrderDetail = ({ orderId }) => {
   const fetchOrderDetails = async () => {
     if (userToken) {
       try {
-        const response = await axios.get(`http://localhost:8080/orders/${orderId}`, {
+        const response = await axios.get(`https://agri-website-4.onrender.com/orders/${orderId}`, {
           headers: {
             Authorization: `Bearer ${userToken}`,
           },
